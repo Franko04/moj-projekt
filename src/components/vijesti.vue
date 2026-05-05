@@ -55,7 +55,7 @@ const ostaleVijesti=sveVijesti.value.slice(1);
         position: absolute;
         left: 2%;
         top: 3%;
-        background-color: rgb(0, 0, 77);
+        background-color: #000249;
         border-radius: 20px;
         width: 48%;
         height: 94%;
@@ -95,7 +95,7 @@ const ostaleVijesti=sveVijesti.value.slice(1);
         top: 3%;
         right: 2%;
         height: 20%;
-        background-color: rgb(0, 0, 77);
+        background-color: #000249;
         border-radius: 20px;
     }
     .malaslika{

@@ -1,14 +1,13 @@
 <script setup>
 import {ref} from 'vue'
 
-
 </script>
     <template>
         <div class="navigacija">
-            <a href="#pocetna">Pocetna</a>
+            <RouterLink to="/">Pocetna</RouterLink>
             <a href="#uclanise">Uclani se</a>
-            <a href="#vijesti">Vijesti</a>
-            <a href="#onama">O nama</a>
+            <RouterLink to="/vijesti">Vijesti</RouterLink>
+            <RouterLink to="/onama">O nama</RouterLink>
             <a href="#rezultati">Rezultati</a>
             <a href="#kontakt">Kontakt</a>
             <a href="#prijavise">Prijavi se</a>

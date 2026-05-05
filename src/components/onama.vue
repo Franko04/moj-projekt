@@ -49,42 +49,34 @@
                 url('../assets/histori.png');
             width: 99.9%;
             height: 65%;
-            position: absolute;
-            top: 1480px;
+            display: flex;
         }
        
         .lijevo1{
             width: 600px;
             height: 340px;
-            position: absolute;
-            top: 65px;
+            padding-top: 50px;
             border-right: yellow solid 4px;
-
+            
         }
         
         .desno1{
             width: 890px;
             height: 380px;
-            position: relative;
-            top: 20px;
-            left: 604px;
+            padding: 20px;
         }
 
         .lijevo1 h2{
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             color: white;
             font-size: 60px;
-            position: absolute;
-            left: 60px;
-            top: 50px;
+        
         }
 
         .lijevo1 h1{
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             color: yellow;
             font-size: 150px;
-            position: absolute;
-            top: 190px;
             left: 170px;
             margin: 30px;
         }
@@ -92,13 +84,14 @@
         .desno1 h1{
             margin-left: 20px;
             color: yellow;
-            margin-top: 60px;
+            margin-top: 20px;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
 
         .desno1 h4{
-            margin: 20px;
+            margin: 5px;
             color: white;
+            float: right;
         }
         nav{
             position: absolute;
