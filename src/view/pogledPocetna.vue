@@ -5,7 +5,7 @@
     import Onama from '../components/onama.vue'
     import Rezultati from '../components/rezultati.vue'
     import kontakt from '../components/kontakt.vue'
-import Kontakt from '../components/kontakt.vue'
+    import Kontakt from '../components/kontakt.vue'
 </script>
 
 <template>
