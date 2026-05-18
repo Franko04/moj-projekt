@@ -1,41 +1,84 @@
 <script setup>
-import {ref} from 'vue'
+
 import Button from './Button.vue';
+import { ref, onMounted } from 'vue';
+import { supabase } from '../../utils/supabase';
+
+    const vijesti = ref([])
+     async function dohvatiVijesti(){
+          const {data, error} = await supabase
+          .from('Vijesti')
+          .select ('Naziv, Mjesto, Datum, Slika')
+          .order('id', { ascending: false });
+          
+          if (error){
+               console.error(error.message)
+               return
+          }
+          vijesti.value = data;
+          console.log(data)
+    }
+
+    onMounted(()=>{
+     dohvatiVijesti()
+    })
 
 
-
-const sveVijesti=ref([
-    {id: 1, datum: "22.3.2026.", lokacija: "Visisci", naslov: "Capljina bolja od Visica", slika:"https://caportal.net/wp-content/uploads/2025/04/HNK-Capljina-NK-Ljubuski-2025_5249.jpg"},
-    {id: 2, datum: "20.3.2026", lokacija: "Capljina", naslov: "Capljina na Bjelavama protiv Kruseva", slika: "https://caportal.net/wp-content/uploads/2025/06/hnk-capljina-nk-jedinstvo-bihac-8.jpg"},
-    {id: 3, datum: "13.3.2026", lokacija: "Capljina", naslov: "Zavrsetak polusezone na 1. mjestu", slika: "https://caportal.net/wp-content/uploads/2025/07/prozivka-hnk-capljina-7.jpg"},
-    {id: 4, datum: "6.3.2026", lokacija: "Citluk", naslov: "Poraz od Brotnja u Citluku", slika: "https://caportal.net/wp-content/uploads/2025/06/hnk-capljina-nk-jedinstvo-bihac-8.jpg"},
-    {id: 5, datum: "1.3.2026", lokacija: "Klis", naslov: "Pobjeda u Butrovic polju 7 0", slika: "https://caportal.net/wp-content/uploads/2025/07/prozivka-hnk-capljina-7.jpg"}
-])
-const glavnaVijest=sveVijesti.value[0];
-const ostaleVijesti=sveVijesti.value.slice(1);
 
 
 </script>
 
 <template>
    
-    <div class="glavni">
+    <div class="glavni" v-if="vijesti.length > 0">
         <div class="lijevi1">
-            <div class="slika1" :style="{ backgroundImage: `url(${glavnaVijest.slika})`, backgroundSize: 'cover' }"></div>
+            <div class="slika1">
+                <img :src="vijesti[0].Slika">
+            </div>
             <div class="text1">
                 
-                <h1>{{ glavnaVijest.naslov }}</h1>
-                <h5>{{ glavnaVijest.lokacija }} {{ glavnaVijest.datum }}</h5>
-                <Button label="Vise" class="dugme"/>
+                <h1>{{ vijesti[0].Naziv }}</h1>
+                <h5>{{ vijesti[0].Datum }} {{ vijesti[0].Mjesto }}</h5>
             </div>
         </div>
 
-        <div class="lijevakartica" v-for="(vijest, index) in ostaleVijesti" :key="vijest.id" :style="{ top: (4 + (index * 24)) + '%' }">
-            <div class="malaslika" :style="{ backgroundImage: `url(${vijest.slika})`, backgroundSize: 'cover' }"></div>
+        <div class="lijevakartica1">
+            <div class="malaslika">
+                <img :src="vijesti[1].Slika">
+            </div>
             <div class="malitext">
-                <h2>{{ vijest.naslov }}</h2>
-                <h5>{{ vijest.lokacija }} {{ vijest.datum }}</h5>
-                <Button label="Vise" class="dugme2"/>
+                <h2>{{ vijesti[1].Naziv }}</h2>
+                <h5>{{ vijesti[1].Datum }} {{ vijesti[1].Mjesto }}</h5>
+            </div>
+        </div>
+
+        <div class="lijevakartica2">
+            <div class="malaslika">
+                <img :src="vijesti[2].Slika">
+            </div>
+            <div class="malitext">
+                <h2>{{ vijesti[2].Naziv }}</h2>
+                <h5>{{ vijesti[2].Datum }} {{ vijesti[2].Mjesto }}</h5>
+            </div>
+        </div>
+
+        <div class="lijevakartica3">
+            <div class="malaslika">
+                <img :src="vijesti[3].Slika">
+            </div>
+            <div class="malitext">
+                <h2>{{ vijesti[3].Naziv }}</h2>
+                <h5>{{ vijesti[3].Datum }} {{ vijesti[3].Mjesto }}</h5>
+            </div>
+        </div>
+
+        <div class="lijevakartica4">
+            <div class="malaslika">
+                <img :src="vijesti[4].Slika">
+            </div>
+            <div class="malitext">
+                <h2>{{ vijesti[4].Naziv }}</h2>
+                <h5>{{ vijesti[4].Datum }} {{ vijesti[4].Mjesto }}</h5>
             </div>
         </div>
     </div>
@@ -43,6 +86,13 @@ const ostaleVijesti=sveVijesti.value.slice(1);
 </template>
 
 <style scoped>
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
     .glavni{
         position: relative;
         width: 100%;
@@ -55,7 +105,7 @@ const ostaleVijesti=sveVijesti.value.slice(1);
         position: absolute;
         left: 2%;
         top: 3%;
-        background-color: #000249;
+        background-color: rgb(12, 0, 58);
         border-radius: 20px;
         width: 48%;
         height: 94%;
@@ -76,7 +126,7 @@ const ostaleVijesti=sveVijesti.value.slice(1);
     }
     .text1 h1{
         color: white;
-        font-family: tahoma;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         position: absolute;
         margin: 0%;
         left: 15px;
@@ -84,18 +134,45 @@ const ostaleVijesti=sveVijesti.value.slice(1);
     }
     .text1 h5{
         color: rgb(117, 117, 117);
-        font-family: tahoma;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         position: absolute;
         top: 12%;
         left: 15px;
     }
-    .lijevakartica{
+    .lijevakartica1{
         width: 46%;
         position: absolute;
         top: 3%;
         right: 2%;
         height: 20%;
-        background-color: #000249;
+        background-color: rgb(12, 0, 58);
+        border-radius: 20px;
+    }
+    .lijevakartica2{
+        width: 46%;
+        position: absolute;
+        top: 27.5%;
+        right: 2%;
+        height: 20%;
+        background-color: rgb(12, 0, 58);
+        border-radius: 20px;
+    }
+    .lijevakartica3{
+        width: 46%;
+        position: absolute;
+        top: 52.5%;
+        right: 2%;
+        height: 20%;
+        background-color: rgb(12, 0, 58);
+        border-radius: 20px;
+    }
+    .lijevakartica4{
+        width: 46%;
+        position: absolute;
+        top: 77%;
+        right: 2%;
+        height: 20%;
+        background-color: rgb(12, 0, 58);
         border-radius: 20px;
     }
     .malaslika{
@@ -113,13 +190,13 @@ const ostaleVijesti=sveVijesti.value.slice(1);
     }
     .malitext h2{
         color: white;
-        font-family: tahoma;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         position: absolute;
         left: 3%;
     }
     .malitext h5{
         color: rgb(117, 117, 117);
-        font-family: tahoma;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         position: absolute;
         left: 3%;
     }

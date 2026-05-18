@@ -79,7 +79,7 @@
         width: 90%;             
         background-color: #00011d;
         height: 40px;
-        border-radius: 5px;
+        border-radius: 10px;
         color: white;           
         display: grid;
         grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 2fr 1.5fr 1.5fr;

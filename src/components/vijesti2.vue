@@ -8,6 +8,7 @@ import { supabase } from '../../utils/supabase';
           const {data, error} = await supabase
           .from('Vijesti')
           .select ('Naziv, Mjesto, Datum, Slika')
+          .order('id', { ascending: false });
           
           if (error){
                console.error(error.message)
@@ -15,9 +16,6 @@ import { supabase } from '../../utils/supabase';
           }
           vijesti.value = data;
           console.log(data)
-
-         
-          
     }
 
     onMounted(()=>{
@@ -26,6 +24,7 @@ import { supabase } from '../../utils/supabase';
 </script>
 
 <template>
+    <div class="vj"><h1>Vijesti</h1></div>
     <div class="glavni">
         <div class="sporedni" v-for="vijest in vijesti">
             <div class="slika">
@@ -44,15 +43,25 @@ import { supabase } from '../../utils/supabase';
 
 <style scoped>
 
-
+.vj h1{
+    margin: 0%;
+    color: yellow;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding-top: 50px;
+}
+.vj{
+    background-color: rgb(12, 0, 58);
+    margin: 0px;
+    width: 100%;
+    height: 100px;
+}
 .glavni{
     width: 100%;
     min-height: 500px;
-    background-color: #000249;
+    background-color: rgb(12, 0, 58);
     position: relative;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    
 }
 
 .sporedni{

@@ -9,8 +9,7 @@ import {ref} from 'vue'
             <RouterLink to="/vijesti">Vijesti</RouterLink>
             <RouterLink to="/onama">O nama</RouterLink>
             <RouterLink to="/rezultati">Rezultati</RouterLink>
-            <a href="#kontakt">Kontakt</a>
-            <a href="#prijavise">Prijavi se</a>
+            <a href="#prijavise">Raspored</a>
 
         </div>
     </template>

@@ -41,8 +41,8 @@
 
 <style scoped>
 
-    
-    .histori{
+
+        .histori{
             
             background-image: 
                 linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), /* Crni sloj (60% prozirnosti) */
@@ -97,7 +97,7 @@
             position: absolute;
             margin: 0px;
             color: white;
-            background-color: rgb(0, 0, 77);
+            background-color: rgb(12, 0, 58);
             text-decoration: none;
         }
         button{
