@@ -4,6 +4,7 @@ import PogledPocetna from './view/pogledPocetna.vue'
 import PogledOnama from './view/pogledOnama.vue'
 import PogledVijesti from './view/pogledVijesti.vue'
 import PogledRezultati from './view/pogledRezultati.vue'
+import PogledRaspored from './view/pogledRaspored.vue'
 
 
 const routes = [
@@ -11,6 +12,7 @@ const routes = [
   { path: '/onama', component: PogledOnama },
   { path: '/vijesti', component: PogledVijesti },
   { path: '/rezultati', component: PogledRezultati },
+  { path: '/raspored', component: PogledRaspored},
 ]
 
 export const router = createRouter({
